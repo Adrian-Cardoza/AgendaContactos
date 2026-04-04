@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EL
 {
-    public class Enum
-    {
-    }
+	public class TipoContacto
+	{
+	}
 }
