@@ -9,7 +9,7 @@ namespace EL
     public class Contacto
     {
         // Se cambió ContactoID a Id para coincidir con la llave primaria de la tabla
-        public int Id { get; set; }
+        public int ContactoId { get; set; }
 
         public string Nombre { get; set; }
 
@@ -22,5 +22,11 @@ namespace EL
 
         // Se cambió FechaCreacion a FechaRegistro para coincidir con el diseño del DataGridView
         public DateTime FechaRegistro { get; set; }
-    }
+		
+        public int UsuarioId { get; set; }
+
+		// Propiedad de navegación para Entity Framework
+		public Usuario Usuario { get; set; }
+
+	}
 }
