@@ -8,7 +8,7 @@
         public override void Up()
         {
             CreateTable(
-                "dbo.Contactos",
+                "dbo.Contacto",
                 c => new
                     {
                         ContactoId = c.Int(nullable: false, identity: true),
@@ -20,11 +20,11 @@
                         UsuarioId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.ContactoId)
-                .ForeignKey("dbo.Usuarios", t => t.UsuarioId, cascadeDelete: true)
+                .ForeignKey("dbo.Usuario", t => t.UsuarioId, cascadeDelete: true)
                 .Index(t => t.UsuarioId);
             
             CreateTable(
-                "dbo.Usuarios",
+                "dbo.Usuario",
                 c => new
                     {
                         UsuarioId = c.Int(nullable: false, identity: true),
@@ -38,10 +38,10 @@
         
         public override void Down()
         {
-            DropForeignKey("dbo.Contactos", "UsuarioId", "dbo.Usuarios");
-            DropIndex("dbo.Contactos", new[] { "UsuarioId" });
-            DropTable("dbo.Usuarios");
-            DropTable("dbo.Contactos");
+            DropForeignKey("dbo.Contacto", "UsuarioId", "dbo.Usuario");
+            DropIndex("dbo.Contacto", new[] { "UsuarioId" });
+            DropTable("dbo.Usuario");
+            DropTable("dbo.Contacto");
         }
     }
 }

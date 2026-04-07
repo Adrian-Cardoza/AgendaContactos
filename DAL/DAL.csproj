@@ -54,9 +54,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AgendaDbContext.cs" />
-    <Compile Include="Migrations\202604070402341_IniciarBaseDatos.cs" />
-    <Compile Include="Migrations\202604070402341_IniciarBaseDatos.Designer.cs">
-      <DependentUpon>202604070402341_IniciarBaseDatos.cs</DependentUpon>
+    <Compile Include="ContactoDal.cs" />
+    <Compile Include="Migrations\202604070604184_IniciarBaseDatos.cs" />
+    <Compile Include="Migrations\202604070604184_IniciarBaseDatos.Designer.cs">
+      <DependentUpon>202604070604184_IniciarBaseDatos.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,8 +73,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202604070402341_IniciarBaseDatos.resx">
-      <DependentUpon>202604070402341_IniciarBaseDatos.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202604070604184_IniciarBaseDatos.resx">
+      <DependentUpon>202604070604184_IniciarBaseDatos.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
