@@ -17,7 +17,7 @@ namespace CUI
 
         static void Main(string[] args)
         {
-            Console.WriteLine("BIENVENIDO A LA AGENDA DEL ING. PIÑATA");
+            Console.WriteLine("BIENVENIDO A LA AGENDA DE CONTACTOS");
             do
             {
                 Console.WriteLine("\nIngrese Opcion:");
