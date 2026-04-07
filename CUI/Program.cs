@@ -25,6 +25,7 @@ namespace CUI
                 Console.WriteLine("2. Crear nuevo Contacto.");
                 Console.WriteLine("3. Buscar Contacto.");
                 Console.WriteLine("4. Eliminar Contacto.");
+                Console.WriteLine("5. Actualizar Contacto.");
                 Console.WriteLine("0. Salir");
 
                 if (int.TryParse(Console.ReadLine(), out int opcion))
@@ -45,6 +46,9 @@ namespace CUI
                             break;
                         case 4:
                             EliminarContacto(); 
+                            break;
+                        case 5:
+                            ActualizarContacto();
                             break;
                         default:
                             Console.WriteLine("Opción no válida.");
@@ -110,6 +114,53 @@ namespace CUI
             }
         }
 
+        static void ActualizarContacto()
+        {
+            Console.WriteLine("\n--- Actualizar Contacto ---");
+            Console.Write("Ingrese el ID del contacto que desea actualizar: ");
+
+            if (int.TryParse(Console.ReadLine(), out int idActualizar))
+            {
+                Contacto contacto = new Contacto();
+                contacto.ContactoId = idActualizar;
+
+                Console.WriteLine("Ingrese los nuevos datos:");
+
+                Console.Write("Nuevo Nombre completo: ");
+                contacto.Nombre = Console.ReadLine();
+
+                Console.Write("Nuevo Teléfono: ");
+                contacto.Telefono = Console.ReadLine();
+
+                Console.Write("Nuevo Correo electrónico: ");
+                contacto.Correo = Console.ReadLine();
+
+                Console.Write("Nueva Dirección: ");
+                contacto.Direccion = Console.ReadLine();
+
+                contacto.UsuarioId = idUsuarioLogueado;
+
+                _contactoBLL = new ContactoBll();
+
+                // CAMBIO AQUÍ: Usamos 'int' porque Guardar devuelve un entero
+                int resultado = _contactoBLL.Guardar(contacto, true);
+
+                if (resultado > 0)
+                {
+                    Console.WriteLine(">> Contacto actualizado con éxito.");
+                }
+                else
+                {
+                    Console.WriteLine(">> Error: No se pudo actualizar. Verifique que el ID exista.");
+                }
+            }
+            else
+            {
+                Console.WriteLine(">> ID inválido.");
+            }
+        }
+
+
         static void EliminarContacto()
         {
             Console.WriteLine("\nEliminar Contacto");
@@ -150,15 +201,30 @@ namespace CUI
         static void BuscarContacto()
         {
             Console.Write("\nIngrese el nombre o teléfono a buscar: ");
-            string palabra = Console.ReadLine();
+            string palabra = Console.ReadLine().ToLower();
 
             _contactoBLL = new ContactoBll();
-            var resultados = _contactoBLL.MostrarContactos(idUsuarioLogueado);
 
-            Console.WriteLine("\n Resultados de Búsqueda ");
-            foreach (var item in resultados)
+            // 1. Obtenemos todos los contactos del usuario
+            var todosLosContactos = _contactoBLL.MostrarContactos(idUsuarioLogueado);
+
+            // 2. Filtramos en memoria usando LINQ
+            var resultados = todosLosContactos.Where(c =>
+                (c.Nombre != null && c.Nombre.ToLower().Contains(palabra)) ||
+                (c.Telefono != null && c.Telefono.Contains(palabra))
+            ).ToList();
+
+            Console.WriteLine("\n--- Resultados de Búsqueda ---");
+            if (resultados.Count == 0)
             {
-                Console.WriteLine($"- {item.Nombre} | Tel: {item.Telefono}");
+                Console.WriteLine("No se encontraron coincidencias.");
+            }
+            else
+            {
+                foreach (var item in resultados)
+                {
+                    Console.WriteLine($"- {item.Nombre} | Tel: {item.Telefono}");
+                }
             }
         }
     }
