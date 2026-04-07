@@ -3,4 +3,5 @@
   <Project Path="CUI/CUI.csproj" Id="9a7ceda4-ea67-48d1-8a97-97b8992b365f" />
   <Project Path="DAL/DAL.csproj" Id="a13952cb-b0bc-45a4-bc4e-ab6fd83eab16" />
   <Project Path="EL/EL.csproj" Id="66146c48-81b6-4539-af05-64655780b3f8" />
+  <Project Path="GUI/GUI.csproj" Id="db894f4c-34ff-4d88-90cc-eb693790f235" />
 </Solution>
