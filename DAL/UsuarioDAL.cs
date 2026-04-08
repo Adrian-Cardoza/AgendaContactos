@@ -9,28 +9,61 @@ namespace DAL
 {
     public class UsuarioDal
     {
-        // contexto de base de datos
-        private AgendaDbContext _db;
 
+
+        // MÉTODO PARA EL LOGIN
         public Usuario Validar(string nombreUsuario, string password)
         {
-            Usuario usuario = null;
             try
             {
-                using (_db = new AgendaDbContext())
+                using (var db = new AgendaDbContext())
                 {
-                    // Buscamos un usuario que coincida con el nombre y el password
-                    usuario = _db.Usuarios.FirstOrDefault(u =>
+                    // Buscamos un usuario que coincida con el nombre y contraseña
+                    return db.Usuarios.FirstOrDefault(u =>
                         u.NombreUsuario == nombreUsuario &&
                         u.Contrasena == password);
                 }
             }
             catch (Exception ex)
             {
-                // Si algo truena, al menos sabemos qué fue
-                Console.WriteLine("ERROR DAL USUARIO: " + ex.Message);
+                Console.WriteLine("ERROR DAL VALIDAR: " + ex.Message);
+                return null;
             }
-            return usuario;
+        }
+
+        // MÉTODO PARA EL REGISTRO
+        public bool ExisteUsuario(string nombreUsuario)
+        {
+            try
+            {
+                using (var db = new AgendaDbContext())
+                {
+                    return db.Usuarios.Any(u => u.NombreUsuario.ToLower() == nombreUsuario.ToLower());
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("ERROR REAL: " + ex.Message);
+                return false;
+            }
+        }
+
+        // MÉTODO PARA EL REGISTRO
+        public bool Insertar(Usuario entidad)
+        {
+            try
+            {
+                using (var db = new AgendaDbContext())
+                {
+                    db.Usuarios.Add(entidad);
+                    return db.SaveChanges() > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+throw new Exception("Error en la base de datos: " + ex.Message);
+                return false;
+            }
         }
     }
 }

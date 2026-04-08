@@ -27,7 +27,7 @@ namespace GUI.Autenticacion
             // 1. Validar que no estén vacíos
             if (string.IsNullOrEmpty(txtUsuario.Text) || string.IsNullOrEmpty(txtContrasena.Text))
             {
-                MessageBox.Show("Por favor, ingrese sus credenciales.", "Agenda | Error",
+                MessageBox.Show("Por favor, ingrese sus credenciales.", "Agenda Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -65,6 +65,43 @@ namespace GUI.Autenticacion
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAbrirRegistro_Click(object sender, EventArgs e)
+        {
+            // Creamos una instancia de tu nuevo formulario
+            Registrar ventanaRegistro = new Registrar();
+
+            // Lo abrimos como un cuadro de diálogo (bloquea el login hasta cerrar este)
+            ventanaRegistro.ShowDialog();
+        }
+
+        private void btnIrARegistro_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            // Asegúrate de que el nombre 'Registrar' sea el de tu formulario
+            Registrar ventana = new Registrar();
+            ventana.ShowDialog();
+        }
+        private void lnkRegistrarse_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            // Llamamos a la ventana que acabas de crear
+            Registrar ventanaRegistro = new Registrar();
+            ventanaRegistro.ShowDialog();
         }
     }
 }
