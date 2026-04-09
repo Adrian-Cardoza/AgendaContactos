@@ -1,0 +1,53 @@
+﻿using EL;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace GUI
+{
+	public partial class Dashboard : Form
+	{
+		public Dashboard()
+		{
+			InitializeComponent();
+		}
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+		// Variable global dentro del formulario para usarla después
+private Usuario _usuarioSesion;
+
+        // Modificamos el constructor para recibir al usuario
+        public Dashboard(Usuario usuarioRecibido)
+        {
+            InitializeComponent();
+            _usuarioSesion = usuarioRecibido;
+
+            // Mostramos el nombre en un Label o en el título de la 
+            lblNombreUsuario.Text = $"Bienvenido, {_usuarioSesion.NombreCompleto}";
+        }
+
+        private void Dashboard_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Creamos la instancia del formulario de Agregar y le pasamos el usuario actual
+            GUI.Contactos.AgregarContacto frmCrear = new GUI.Contactos.AgregarContacto(_usuarioSesion);
+
+            // Lo mostramos como un cuadro de diálogo
+            frmCrear.ShowDialog();
+        }
+    }
+}
