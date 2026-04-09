@@ -75,6 +75,12 @@
     <Compile Include="Contactos\AgregarContacto.Designer.cs">
       <DependentUpon>AgregarContacto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Contactos\EditarContacto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Contactos\EditarContacto.Designer.cs">
+      <DependentUpon>EditarContacto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Contactos\ListadoContactos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +103,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Contactos\AgregarContacto.resx">
       <DependentUpon>AgregarContacto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contactos\EditarContacto.resx">
+      <DependentUpon>EditarContacto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Contactos\ListadoContactos.resx">
       <DependentUpon>ListadoContactos.cs</DependentUpon>

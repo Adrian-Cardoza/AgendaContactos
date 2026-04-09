@@ -1,4 +1,5 @@
 ﻿using GUI.Autenticacion;
+using GUI.Contactos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,7 @@ namespace GUI
             {
                 // este método inicializa el formulario a mostrar
                 // (Cambia Form1 por el nombre de tu Menú Principal si es distinto)
-                Application.Run(new Form1());
+                Application.Run(new ListadoContactos());
             }
             else
             {
