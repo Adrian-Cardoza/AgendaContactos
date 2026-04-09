@@ -56,6 +56,16 @@ namespace GUI.Autenticacion
                 txtContrasena.Clear();
                 txtUsuario.Focus();
             }
+
+            if (usuarioLogueado != null)
+            {
+                // Creamos el Dashboard y le pasamos el objeto completo
+                Dashboard frmDashboard = new Dashboard(usuarioLogueado);
+
+                this.Hide(); // Escondemos el Login
+                frmDashboard.ShowDialog(); // Mostramos el Dashboard
+                this.Close(); // Cerramos el Login al terminar
+            }
         }
 
         private void Contrasena_TextChanged(object sender, EventArgs e)

@@ -34,10 +34,10 @@
             this.CorreoTextoAgregarContacto = new System.Windows.Forms.Label();
             this.TelefonoTextoAgregarContacto = new System.Windows.Forms.Label();
             this.nombreTextoAgregarContacto = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtDireccion = new System.Windows.Forms.TextBox();
+            this.txtCorreo = new System.Windows.Forms.TextBox();
+            this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
             this.buttonAgregar = new System.Windows.Forms.Button();
             this.buttoncancelar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -52,7 +52,6 @@
             this.label1.Size = new System.Drawing.Size(265, 36);
             this.label1.TabIndex = 4;
             this.label1.Text = "Agregar Contacto";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // groupBox1
             // 
@@ -61,16 +60,15 @@
             this.groupBox1.Controls.Add(this.CorreoTextoAgregarContacto);
             this.groupBox1.Controls.Add(this.TelefonoTextoAgregarContacto);
             this.groupBox1.Controls.Add(this.nombreTextoAgregarContacto);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.txtDireccion);
+            this.groupBox1.Controls.Add(this.txtCorreo);
+            this.groupBox1.Controls.Add(this.txtTelefono);
+            this.groupBox1.Controls.Add(this.txtNombre);
             this.groupBox1.Location = new System.Drawing.Point(12, 75);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(791, 370);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // DireccionTextoAgregarContacto
             // 
@@ -98,7 +96,6 @@
             this.TelefonoTextoAgregarContacto.Size = new System.Drawing.Size(104, 25);
             this.TelefonoTextoAgregarContacto.TabIndex = 14;
             this.TelefonoTextoAgregarContacto.Text = "Teléfono:";
-            this.TelefonoTextoAgregarContacto.Click += new System.EventHandler(this.label3_Click);
             // 
             // nombreTextoAgregarContacto
             // 
@@ -109,33 +106,33 @@
             this.nombreTextoAgregarContacto.TabIndex = 13;
             this.nombreTextoAgregarContacto.Text = "Nombre:";
             // 
-            // textBox4
+            // txtDireccion
             // 
-            this.textBox4.Location = new System.Drawing.Point(141, 297);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(566, 30);
-            this.textBox4.TabIndex = 12;
+            this.txtDireccion.Location = new System.Drawing.Point(141, 297);
+            this.txtDireccion.Name = "txtDireccion";
+            this.txtDireccion.Size = new System.Drawing.Size(566, 30);
+            this.txtDireccion.TabIndex = 12;
             // 
-            // textBox1
+            // txtCorreo
             // 
-            this.textBox1.Location = new System.Drawing.Point(141, 213);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(566, 30);
-            this.textBox1.TabIndex = 9;
+            this.txtCorreo.Location = new System.Drawing.Point(141, 213);
+            this.txtCorreo.Name = "txtCorreo";
+            this.txtCorreo.Size = new System.Drawing.Size(566, 30);
+            this.txtCorreo.TabIndex = 9;
             // 
-            // textBox2
+            // txtTelefono
             // 
-            this.textBox2.Location = new System.Drawing.Point(141, 132);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(566, 30);
-            this.textBox2.TabIndex = 10;
+            this.txtTelefono.Location = new System.Drawing.Point(141, 132);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(566, 30);
+            this.txtTelefono.TabIndex = 10;
             // 
-            // textBox3
+            // txtNombre
             // 
-            this.textBox3.Location = new System.Drawing.Point(141, 43);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(566, 30);
-            this.textBox3.TabIndex = 11;
+            this.txtNombre.Location = new System.Drawing.Point(141, 43);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(566, 30);
+            this.txtNombre.TabIndex = 11;
             // 
             // buttonAgregar
             // 
@@ -146,7 +143,6 @@
             this.buttonAgregar.TabIndex = 6;
             this.buttonAgregar.Text = "Agregar";
             this.buttonAgregar.UseVisualStyleBackColor = false;
-            this.buttonAgregar.Click += new System.EventHandler(this.Agregar_Click);
             // 
             // buttoncancelar
             // 
@@ -157,6 +153,7 @@
             this.buttoncancelar.TabIndex = 7;
             this.buttoncancelar.Text = "Cancelar";
             this.buttoncancelar.UseVisualStyleBackColor = false;
+            this.buttoncancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // AgregarContacto
             // 
@@ -168,10 +165,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "AgregarContacto";
             this.Text = "AgregarContacto";
-            this.Load += new System.EventHandler(this.AgregarContacto_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -186,10 +182,10 @@
         private System.Windows.Forms.Label CorreoTextoAgregarContacto;
         private System.Windows.Forms.Label TelefonoTextoAgregarContacto;
         private System.Windows.Forms.Label nombreTextoAgregarContacto;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtDireccion;
+        private System.Windows.Forms.TextBox txtCorreo;
+        private System.Windows.Forms.TextBox txtTelefono;
+        private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Button buttonAgregar;
         private System.Windows.Forms.Button buttoncancelar;
     }
