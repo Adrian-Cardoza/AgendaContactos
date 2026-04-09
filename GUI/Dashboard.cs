@@ -24,7 +24,7 @@ namespace GUI
         }
 
 		// Variable global dentro del formulario para usarla después
-private Usuario _usuarioSesion;
+        private Usuario _usuarioSesion;
 
         // Modificamos el constructor para recibir al usuario
         public Dashboard(Usuario usuarioRecibido)
@@ -49,5 +49,11 @@ private Usuario _usuarioSesion;
             // Lo mostramos como un cuadro de diálogo
             frmCrear.ShowDialog();
         }
-    }
+
+		private void btnListadoContactos_Click(object sender, EventArgs e)
+		{
+            GUI.Contactos.ListadoContactos frmListado = new GUI.Contactos.ListadoContactos();
+            frmListado.ShowDialog();
+		}
+	}
 }

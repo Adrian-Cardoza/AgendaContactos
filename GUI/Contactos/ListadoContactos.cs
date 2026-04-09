@@ -46,14 +46,17 @@ namespace GUI.Contactos
 
         private void btnAñadirContacto_Click(object sender, EventArgs e)
         {
-            // 1. Creamos una instancia de la ventana
-            AgregarContacto ventanaAgregar = new AgregarContacto();
+			Usuario usuarioActual = new Usuario();
+			usuarioActual.UsuarioId = idUsuarioLogueado;
+
+			// 1. Creamos una instancia de la ventana
+			AgregarContacto ventanaAgregar = new AgregarContacto(usuarioActual);
 
             // 2. La mostramos de forma modal (bloquea la ventana de atrás hasta cerrar esta)
             ventanaAgregar.ShowDialog();
             
-
-        }
+            ObtenerContactos(); // Refrescamos la tabla al volver de agregar un contacto
+		}
 
         // 1. Cuando el usuario entra al cuadro
         private void txtBuscar_Enter(object sender, EventArgs e)
