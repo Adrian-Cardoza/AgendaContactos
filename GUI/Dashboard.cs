@@ -13,6 +13,8 @@ namespace GUI
 {
 	public partial class Dashboard : Form
 	{
+		private Usuario _usuarioSesion;
+
 		public Dashboard()
 		{
 			InitializeComponent();
@@ -22,9 +24,6 @@ namespace GUI
         {
 
         }
-
-		// Variable global dentro del formulario para usarla después
-        private Usuario _usuarioSesion;
 
         // Modificamos el constructor para recibir al usuario
         public Dashboard(Usuario usuarioRecibido)
@@ -52,8 +51,15 @@ namespace GUI
 
 		private void btnListadoContactos_Click(object sender, EventArgs e)
 		{
-            GUI.Contactos.ListadoContactos frmListado = new GUI.Contactos.ListadoContactos();
-            frmListado.ShowDialog();
+			GUI.Contactos.ListadoContactos frmListado = new GUI.Contactos.ListadoContactos(_usuarioSesion);
+            this.Hide();
+			frmListado.ShowDialog();
+			this.Show();
+		}
+
+		private void Dashboard_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			Application.Exit();
 		}
 	}
 }

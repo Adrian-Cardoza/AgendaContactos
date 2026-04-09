@@ -111,8 +111,10 @@ namespace GUI.Autenticacion
         {
             // Asegúrate de que el nombre 'Registrar' sea el de tu formulario
             Registrar ventana = new Registrar();
+            this.Hide();
             ventana.ShowDialog();
-        }
+            this.Show();
+		}
         private void lnkRegistrarse_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             // Llamamos a la ventana que acabas de crear

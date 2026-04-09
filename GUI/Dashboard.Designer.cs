@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
 			this.label1 = new System.Windows.Forms.Label();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.lblNombreUsuario = new System.Windows.Forms.Label();
@@ -111,8 +112,10 @@
 			this.ClientSize = new System.Drawing.Size(800, 450);
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.groupBox1);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "Dashboard";
 			this.Text = "Dashboard";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Dashboard_FormClosed);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			this.groupBox2.ResumeLayout(false);

@@ -15,11 +15,12 @@ namespace GUI.Contactos
     public partial class ListadoContactos : Form
     {
         ContactoBll _contactoBLL = new ContactoBll();
-        int idUsuarioLogueado = 1;
-        public ListadoContactos()
+		private Usuario _usuarioSesion;
+		public ListadoContactos(Usuario usuarioRecibido)
         {
             InitializeComponent();
-        }
+			_usuarioSesion = usuarioRecibido;
+		}
 
         private void ListadoContactos_Load(object sender, EventArgs e)
         {
@@ -28,26 +29,31 @@ namespace GUI.Contactos
 
         private void ObtenerContactos()
         {
-            // 'dgvContactos' es el nombre de tu DataGridView. 
-            // Si le pusiste otro nombre en las propiedades, cámbialo aquí.
-            try
-            {
-                var lista = _contactoBLL.ObtenerContactos(idUsuarioLogueado);
-                dgvListadoContactos.DataSource = null;
-                dgvListadoContactos.DataSource = lista;
-                dgvListadoContactos.AutoGenerateColumns = true;
-                dgvListadoContactos.Refresh();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar datos: " + ex.Message);
-            }
-        }
+			try
+			{
+				// Pasamos el ID que este logueado
+				var lista = _contactoBLL.ObtenerContactos(_usuarioSesion.UsuarioId);
+
+				dgvListadoContactos.DataSource = null;
+				dgvListadoContactos.DataSource = lista;
+				dgvListadoContactos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+				if (dgvListadoContactos.Columns["UsuarioId"] != null)
+					dgvListadoContactos.Columns["UsuarioId"].Visible = false;
+
+				if (dgvListadoContactos.Columns["Usuario"] != null)
+					dgvListadoContactos.Columns["Usuario"].Visible = false;
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Error: " + ex.Message);
+			}
+		}
 
         private void btnAñadirContacto_Click(object sender, EventArgs e)
         {
 			Usuario usuarioActual = new Usuario();
-			usuarioActual.UsuarioId = idUsuarioLogueado;
+			usuarioActual.UsuarioId = _usuarioSesion.UsuarioId;
 
 			// 1. Creamos una instancia de la ventana
 			AgregarContacto ventanaAgregar = new AgregarContacto(usuarioActual);
@@ -89,16 +95,16 @@ namespace GUI.Contactos
             }
             _contactoBLL = new ContactoBll();
 
-            // 1. Traemos la lista completa original
-            var listaCompleta = _contactoBLL.MostrarContactos(idUsuarioLogueado);
+            // Traemos la lista completa original
+            var listaCompleta = _contactoBLL.MostrarContactos(_usuarioSesion.UsuarioId);
 
-            // 2. Filtramos usando LINQ (necesitas 'using System.Linq;' arriba)
+            // Filtramos usando LINQ (necesitas 'using System.Linq;' arriba)
             var filtrado = listaCompleta.Where(c =>
                 (c.Nombre != null && c.Nombre.ToLower().Contains(palabra)) ||
                 (c.Telefono != null && c.Telefono.Contains(palabra))
             ).ToList();
 
-            // 3. Mostramos solo los resultados filtrados en el DataGridView
+            // Mostramos solo los resultados filtrados en el DataGridView
             dgvListadoContactos.DataSource = null;
             dgvListadoContactos.DataSource = filtrado;
         }
@@ -123,5 +129,55 @@ namespace GUI.Contactos
                 MessageBox.Show("Por favor, seleccione un contacto de la lista para editar.");
             }
         }
-    }
+
+		private void btnEliminarContacto_Click(object sender, EventArgs e)
+		{
+			// Verificamos si hay una fila seleccionada
+			if (dgvListadoContactos.SelectedRows.Count > 0)
+			{
+				// Obtenemos el objeto seleccionado
+				Contacto contactoSeleccionado = (Contacto)dgvListadoContactos.CurrentRow.DataBoundItem;
+
+				// Preguntamos al usuario si está seguro
+				DialogResult resultado = MessageBox.Show(
+					$"¿Está seguro de que desea eliminar a {contactoSeleccionado.Nombre}?",
+					"Confirmar eliminación",
+					MessageBoxButtons.YesNo,
+					MessageBoxIcon.Warning
+				);
+
+				if (resultado == DialogResult.Yes)
+				{
+					try
+					{
+						// Llamamos a la BLL para eliminar
+						bool eliminado = _contactoBLL.Eliminar(contactoSeleccionado.ContactoId);
+
+						if (eliminado)
+						{
+							MessageBox.Show("Contacto eliminado correctamente.");
+							ObtenerContactos();
+						}
+						else
+						{
+							MessageBox.Show("No se pudo eliminar el contacto.");
+						}
+					}
+					catch (Exception ex)
+					{
+						MessageBox.Show("Error al eliminar: " + ex.Message);
+					}
+				}
+			}
+			else
+			{
+				MessageBox.Show("Por favor, seleccione un contacto de la lista para eliminar.");
+			}
+		}
+
+		private void btnDashboard_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
+	}
 }
