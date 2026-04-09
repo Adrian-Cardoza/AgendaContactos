@@ -32,17 +32,23 @@ namespace GUI.Autenticacion
                 return;
             }
 
-            // 2. Lógica de validación 
+            // 2. Lógica de validación con BASE DE DATOS
+            UsuarioBll bll = new UsuarioBll();
+            // Llamamos a la función que creamos (asegúrate de que exista en tu BLL)
+            var usuarioLogueado = bll.ValidarUsuario(txtUsuario.Text.Trim(), txtContrasena.Text.Trim());
 
-            if (txtUsuario.Text.Equals("admin") && txtContrasena.Text.Equals("12345"))
+            if (usuarioLogueado != null)
             {
-                // Si las credenciales son correctas
+                // Si el usuario existe en SQL, damos la bienvenida
+                MessageBox.Show($"¡Bienvenido {usuarioLogueado.NombreCompleto}!", "Éxito",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             else
             {
-                // Credenciales incorrectas
+                // Si no existe o la clave está mal
                 MessageBox.Show("Usuario o contraseña incorrectos.", "Agenda | Inicio de Sesión",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 

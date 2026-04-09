@@ -54,7 +54,6 @@
             this.txtContrasena.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtContrasena.Location = new System.Drawing.Point(32, 153);
             this.txtContrasena.Name = "txtContrasena";
-            this.txtContrasena.PasswordChar = '*';
             this.txtContrasena.Size = new System.Drawing.Size(206, 30);
             this.txtContrasena.TabIndex = 1;
             this.txtContrasena.TextChanged += new System.EventHandler(this.Contrasena_TextChanged);
@@ -95,6 +94,7 @@
             this.Iniciarsesion.TabIndex = 4;
             this.Iniciarsesion.Text = "Iniciar sesion";
             this.Iniciarsesion.UseVisualStyleBackColor = false;
+            this.Iniciarsesion.Click += new System.EventHandler(this.btnIniciarSesion_Click);
             // 
             // pictureBox1
             // 

@@ -13,14 +13,15 @@ namespace BLL
         // Una sola instancia de la DAL para toda la clase
         private UsuarioDal _usuarioDAL = new UsuarioDal();
 
-        // MÉTODO PARA EL LOGIN
-        public bool ValidarUsuario(string user, string pass)
+        // MÉTODO PARA EL 
+        public Usuario ValidarUsuario(string user, string pass)
         {
             // Llamamos a la DAL
             var resultado = _usuarioDAL.Validar(user, pass);
 
-            // Si el resultado no es nulo, significa que el usuario EXISTE
-            return resultado != null;
+
+            // Si no existe, 'resultado' será null automáticamente.
+            return resultado;
         }
 
         // MÉTODO PARA EL REGISTRO
