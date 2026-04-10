@@ -86,6 +86,7 @@
             this.txtUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
             this.txtUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.txtUsuario.ForeColor = System.Drawing.SystemColors.Window;
             this.txtUsuario.Location = new System.Drawing.Point(40, 118);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(312, 30);
@@ -97,6 +98,7 @@
             this.txtPass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
             this.txtPass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.txtPass.ForeColor = System.Drawing.SystemColors.Window;
             this.txtPass.Location = new System.Drawing.Point(40, 285);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(312, 30);
@@ -108,6 +110,7 @@
             this.txtConfirmarPass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
             this.txtConfirmarPass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtConfirmarPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.txtConfirmarPass.ForeColor = System.Drawing.SystemColors.Window;
             this.txtConfirmarPass.Location = new System.Drawing.Point(40, 364);
             this.txtConfirmarPass.Name = "txtConfirmarPass";
             this.txtConfirmarPass.Size = new System.Drawing.Size(312, 30);
@@ -181,6 +184,7 @@
             this.txtNombreCompleto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
             this.txtNombreCompleto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNombreCompleto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.txtNombreCompleto.ForeColor = System.Drawing.SystemColors.Window;
             this.txtNombreCompleto.Location = new System.Drawing.Point(40, 204);
             this.txtNombreCompleto.Name = "txtNombreCompleto";
             this.txtNombreCompleto.Size = new System.Drawing.Size(312, 30);
