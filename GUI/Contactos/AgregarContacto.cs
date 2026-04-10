@@ -38,7 +38,7 @@ namespace GUI.Contactos
                 _estaGuardando = true;
                 buttonAgregar.Enabled = false;
 
-                // --- VALIDACIÓN COMPLETA DE CAMPOS ---
+
                 // Verifica que ninguno de los campos esté vacío o solo con espacios
                 if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
                     string.IsNullOrWhiteSpace(txtTelefono.Text) ||
