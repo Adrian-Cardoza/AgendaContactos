@@ -34,7 +34,7 @@ namespace GUI.Autenticacion
 
             // 2. Lógica de validación con BASE DE DATOS
             UsuarioBll bll = new UsuarioBll();
-            // Llamamos a la función que creamos (asegúrate de que exista en tu BLL)
+            // Llamamos a la función que creamos 
             var usuarioLogueado = bll.ValidarUsuario(txtUsuario.Text.Trim(), txtContrasena.Text.Trim());
 
             if (usuarioLogueado != null)
@@ -109,7 +109,7 @@ namespace GUI.Autenticacion
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            // Asegúrate de que el nombre 'Registrar' sea el de tu formulario
+
             Registrar ventana = new Registrar();
             this.Hide();
             ventana.ShowDialog();

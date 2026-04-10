@@ -46,18 +46,24 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(69, 22);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(35, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(250, 22);
+            this.label1.Size = new System.Drawing.Size(340, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Creacion de usuario nuevo";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Contrasena
             // 
             this.Contrasena.AutoSize = true;
+            this.Contrasena.BackColor = System.Drawing.Color.Transparent;
             this.Contrasena.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Contrasena.Location = new System.Drawing.Point(69, 246);
+            this.Contrasena.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Contrasena.Location = new System.Drawing.Point(36, 249);
             this.Contrasena.Name = "Contrasena";
             this.Contrasena.Size = new System.Drawing.Size(187, 22);
             this.Contrasena.TabIndex = 2;
@@ -66,8 +72,10 @@
             // RepetirContrasena
             // 
             this.RepetirContrasena.AutoSize = true;
+            this.RepetirContrasena.BackColor = System.Drawing.Color.Transparent;
             this.RepetirContrasena.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RepetirContrasena.Location = new System.Drawing.Point(69, 329);
+            this.RepetirContrasena.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.RepetirContrasena.Location = new System.Drawing.Point(36, 328);
             this.RepetirContrasena.Name = "RepetirContrasena";
             this.RepetirContrasena.Size = new System.Drawing.Size(208, 22);
             this.RepetirContrasena.TabIndex = 3;
@@ -75,33 +83,43 @@
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Location = new System.Drawing.Point(56, 118);
+            this.txtUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
+            this.txtUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.txtUsuario.Location = new System.Drawing.Point(40, 118);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(208, 28);
+            this.txtUsuario.Size = new System.Drawing.Size(312, 30);
             this.txtUsuario.TabIndex = 4;
             this.txtUsuario.TextChanged += new System.EventHandler(this.txtUsuario_TextChanged);
             // 
             // txtPass
             // 
-            this.txtPass.Location = new System.Drawing.Point(73, 285);
+            this.txtPass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
+            this.txtPass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.txtPass.Location = new System.Drawing.Point(40, 285);
             this.txtPass.Name = "txtPass";
-            this.txtPass.Size = new System.Drawing.Size(100, 22);
+            this.txtPass.Size = new System.Drawing.Size(312, 30);
             this.txtPass.TabIndex = 5;
             this.txtPass.UseSystemPasswordChar = true;
             // 
             // txtConfirmarPass
             // 
-            this.txtConfirmarPass.Location = new System.Drawing.Point(73, 364);
+            this.txtConfirmarPass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
+            this.txtConfirmarPass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtConfirmarPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.txtConfirmarPass.Location = new System.Drawing.Point(40, 364);
             this.txtConfirmarPass.Name = "txtConfirmarPass";
-            this.txtConfirmarPass.Size = new System.Drawing.Size(100, 22);
+            this.txtConfirmarPass.Size = new System.Drawing.Size(312, 30);
             this.txtConfirmarPass.TabIndex = 6;
             this.txtConfirmarPass.UseSystemPasswordChar = true;
             // 
             // btnRegistrar
             // 
-            this.btnRegistrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(138)))));
+            this.btnRegistrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.btnRegistrar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnRegistrar.Location = new System.Drawing.Point(49, 412);
             this.btnRegistrar.Name = "btnRegistrar";
@@ -113,8 +131,10 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.BackColor = System.Drawing.Color.Brown;
-            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.Location = new System.Drawing.Point(208, 412);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(132, 50);
@@ -134,8 +154,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(52, 84);
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label3.Location = new System.Drawing.Point(36, 84);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(281, 22);
             this.label3.TabIndex = 10;
@@ -145,8 +167,10 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(52, 169);
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label4.Location = new System.Drawing.Point(36, 170);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(267, 22);
             this.label4.TabIndex = 11;
@@ -154,10 +178,12 @@
             // 
             // txtNombreCompleto
             // 
-            this.txtNombreCompleto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombreCompleto.Location = new System.Drawing.Point(56, 204);
+            this.txtNombreCompleto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
+            this.txtNombreCompleto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNombreCompleto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.txtNombreCompleto.Location = new System.Drawing.Point(40, 204);
             this.txtNombreCompleto.Name = "txtNombreCompleto";
-            this.txtNombreCompleto.Size = new System.Drawing.Size(208, 28);
+            this.txtNombreCompleto.Size = new System.Drawing.Size(312, 30);
             this.txtNombreCompleto.TabIndex = 12;
             // 
             // Registrar
@@ -179,8 +205,10 @@
             this.Controls.Add(this.Contrasena);
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Registrar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registrar";
