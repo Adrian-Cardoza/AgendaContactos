@@ -32,7 +32,7 @@ namespace GUI
             _usuarioSesion = usuarioRecibido;
 
             // Mostramos el nombre en un Label o en el título de la 
-            lblNombreUsuario.Text = $"Bienvenido, {_usuarioSesion.NombreCompleto}";
+            lblNombreUsuario.Text = $"Agenda Dashboard de {_usuarioSesion.NombreCompleto}";
         }
 
         private void Dashboard_Load(object sender, EventArgs e)

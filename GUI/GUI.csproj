@@ -149,11 +149,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Recursos\agregarContacto.png" />
+    <Content Include="Recursos\contact.png" />
     <Content Include="Recursos\fondo_de_agenda_contactos.png" />
     <Content Include="Recursos\fondo_iniciosesion.png" />
     <Content Include="Recursos\fondo_RegistrarUsuario.png" />
     <Content Include="Recursos\iconoAgenda.ico" />
     <Content Include="Recursos\login.png" />
+    <Content Include="Recursos\schedule.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
