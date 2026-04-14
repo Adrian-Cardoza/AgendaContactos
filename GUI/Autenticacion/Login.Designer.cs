@@ -45,6 +45,7 @@
             this.txtUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
             this.txtUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.txtUsuario.ForeColor = System.Drawing.SystemColors.Window;
             this.txtUsuario.Location = new System.Drawing.Point(28, 66);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(287, 34);
@@ -56,10 +57,12 @@
             this.txtContrasena.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
             this.txtContrasena.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtContrasena.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.txtContrasena.ForeColor = System.Drawing.SystemColors.Window;
             this.txtContrasena.Location = new System.Drawing.Point(32, 153);
             this.txtContrasena.Name = "txtContrasena";
             this.txtContrasena.Size = new System.Drawing.Size(283, 27);
             this.txtContrasena.TabIndex = 1;
+            this.txtContrasena.UseSystemPasswordChar = true;
             this.txtContrasena.TextChanged += new System.EventHandler(this.Contrasena_TextChanged);
             // 
             // label1
