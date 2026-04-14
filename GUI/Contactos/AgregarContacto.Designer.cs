@@ -205,6 +205,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AgregarContacto";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AgregarContacto";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

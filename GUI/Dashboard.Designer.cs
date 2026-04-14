@@ -60,7 +60,7 @@
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.btnListadoContactos);
             this.panel1.Location = new System.Drawing.Point(16, 76);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(679, 286);
             this.panel1.TabIndex = 3;
@@ -100,7 +100,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(348, 18);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button2.Size = new System.Drawing.Size(311, 207);
@@ -119,7 +119,7 @@
             this.btnListadoContactos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnListadoContactos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnListadoContactos.Location = new System.Drawing.Point(15, 18);
-            this.btnListadoContactos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnListadoContactos.Margin = new System.Windows.Forms.Padding(4);
             this.btnListadoContactos.Name = "btnListadoContactos";
             this.btnListadoContactos.Size = new System.Drawing.Size(311, 207);
             this.btnListadoContactos.TabIndex = 0;
@@ -132,7 +132,7 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(80)))));
             this.panel2.Controls.Add(this.lblNombreUsuario);
             this.panel2.Location = new System.Drawing.Point(16, 15);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(679, 54);
             this.panel2.TabIndex = 0;
@@ -141,7 +141,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(80)))));
             this.panel3.Location = new System.Drawing.Point(16, 370);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(679, 76);
             this.panel3.TabIndex = 4;
@@ -158,10 +158,11 @@
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Dashboard";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Dashboard_FormClosed);
             this.panel1.ResumeLayout(false);
