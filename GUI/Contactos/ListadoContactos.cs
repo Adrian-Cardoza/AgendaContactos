@@ -14,8 +14,14 @@ namespace GUI.Contactos
 {
     public partial class ListadoContactos : Form
     {
-        ContactoBll _contactoBLL = new ContactoBll();
+		[System.Runtime.InteropServices.DllImport("user32.dll", CharSet = System.Runtime.InteropServices.CharSet.Auto)]
+
+		private static extern Int32 SendMessage(IntPtr hWnd, int msg, int wParam, [System.Runtime.InteropServices.MarshalAs(System.Runtime.InteropServices.UnmanagedType.LPWStr)] string lParam);
+		private const int EM_SETCUEBANNER = 0x1501;
+
+		ContactoBll _contactoBLL = new ContactoBll();
 		private Usuario _usuarioSesion;
+
 		public ListadoContactos(Usuario usuarioRecibido)
         {
             InitializeComponent();
@@ -24,7 +30,8 @@ namespace GUI.Contactos
 
         private void ListadoContactos_Load(object sender, EventArgs e)
         {
-            ObtenerContactos();
+			SendMessage(txtBuscar.Handle, EM_SETCUEBANNER, 0, "Buscar un contacto...");
+			ObtenerContactos();
         }
 
         private void ObtenerContactos()
@@ -64,50 +71,29 @@ namespace GUI.Contactos
             ObtenerContactos(); // Refrescamos la tabla al volver de agregar un contacto
 		}
 
-        // 1. Cuando el usuario entra al cuadro
-        private void txtBuscar_Enter(object sender, EventArgs e)
-        {
-            if (txtBuscar.Text == "Buscar un Contacto")
-            {
-                txtBuscar.SelectionStart = 0;
-                txtBuscar.SelectionLength = txtBuscar.Text.Length;
-            }
-        }
-
-        // 2. Cuando el usuario sale del cuadro y lo deja vacío
-        private void txtBuscar_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtBuscar.Text))
-            {
-                txtBuscar.Text = "Buscar un Contacto";
-                txtBuscar.ForeColor = Color.Gray; // Vuelve al color de sugerencia
-            }
-        }
-
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            string palabra = txtBuscar.Text.ToLower(); // 'txtBuscar' es el nombre de tu TextBox
+			string palabra = txtBuscar.Text.Trim().ToLower();
 
-            if (palabra == "Buscar un Contacto" || string.IsNullOrWhiteSpace(palabra))
-            {
-                ObtenerContactos(); // Mostramos la lista completa
-                return;
-            }
-            _contactoBLL = new ContactoBll();
+			// Si está vacío, mostramos todo. 
+			// Ya no hay riesgo de que compare contra "Buscar un contacto"
+			if (string.IsNullOrWhiteSpace(palabra))
+			{
+				ObtenerContactos();
+				return;
+			}
 
-            // Traemos la lista completa original
-            var listaCompleta = _contactoBLL.MostrarContactos(_usuarioSesion.UsuarioId);
+			_contactoBLL = new ContactoBll();
+			var listaCompleta = _contactoBLL.MostrarContactos(_usuarioSesion.UsuarioId);
 
-            // Filtramos usando LINQ (necesitas 'using System.Linq;' arriba)
-            var filtrado = listaCompleta.Where(c =>
-                (c.Nombre != null && c.Nombre.ToLower().Contains(palabra)) ||
-                (c.Telefono != null && c.Telefono.Contains(palabra))
-            ).ToList();
+			var filtrado = listaCompleta.Where(c =>
+				(c.Nombre != null && c.Nombre.ToLower().Contains(palabra)) ||
+				(c.Telefono != null && c.Telefono.Contains(palabra))
+			).ToList();
 
-            // Mostramos solo los resultados filtrados en el DataGridView
-            dgvListadoContactos.DataSource = null;
-            dgvListadoContactos.DataSource = filtrado;
-        }
+			dgvListadoContactos.DataSource = null;
+			dgvListadoContactos.DataSource = filtrado;
+		}
 
         private void btnEditarContacto_Click(object sender, EventArgs e)
         {
