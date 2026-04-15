@@ -16,6 +16,7 @@ namespace GUI.Autenticacion
         // Instancia de la lógica de negocio para validar usuarios
  
         UsuarioBll _usuarioBLL = new UsuarioBll();
+        public Usuario UsuarioAutenticado { get; private set; }
 
         public Login()
         {
@@ -34,16 +35,19 @@ namespace GUI.Autenticacion
 
             // 2. Lógica de validación con BASE DE DATOS
             UsuarioBll bll = new UsuarioBll();
-            // Llamamos a la función que creamos 
-            var usuarioLogueado = bll.ValidarUsuario(txtUsuario.Text.Trim(), txtContrasena.Text.Trim());
+            var usuarioEncontrado = bll.ValidarUsuario(txtUsuario.Text.Trim(), txtContrasena.Text.Trim());
 
-            if (usuarioLogueado != null)
+            if (usuarioEncontrado != null)
             {
-                // Si el usuario existe en SQL, damos la bienvenida
-                MessageBox.Show($"¡Bienvenido {usuarioLogueado.NombreCompleto}!", "Éxito",
+                // Si el usuario existe, lo guardamos en la propiedad para que Program.cs lo vea
+                this.UsuarioAutenticado = usuarioEncontrado;
+
+                MessageBox.Show($"¡Bienvenido {usuarioEncontrado.NombreCompleto}!", "Éxito",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 this.DialogResult = DialogResult.OK;
+
+                // CERRAMOS EL LOGIN 
                 this.Close();
             }
             else
@@ -56,42 +60,8 @@ namespace GUI.Autenticacion
                 txtContrasena.Clear();
                 txtUsuario.Focus();
             }
-
-            if (usuarioLogueado != null)
-            {
-                // Creamos el Dashboard y le pasamos el objeto completo
-                Dashboard frmDashboard = new Dashboard(usuarioLogueado);
-
-                this.Hide(); // Escondemos el Login
-                frmDashboard.ShowDialog(); // Mostramos el Dashboard
-                this.Close(); // Cerramos el Login al terminar
-            }
         }
 
-        private void Contrasena_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtUsuario_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Login_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnAbrirRegistro_Click(object sender, EventArgs e)
         {
@@ -102,10 +72,6 @@ namespace GUI.Autenticacion
             ventanaRegistro.ShowDialog();
         }
 
-        private void btnIrARegistro_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {

@@ -50,7 +50,6 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(287, 34);
             this.txtUsuario.TabIndex = 0;
-            this.txtUsuario.TextChanged += new System.EventHandler(this.txtUsuario_TextChanged);
             // 
             // txtContrasena
             // 
@@ -63,7 +62,6 @@
             this.txtContrasena.Size = new System.Drawing.Size(283, 27);
             this.txtContrasena.TabIndex = 1;
             this.txtContrasena.UseSystemPasswordChar = true;
-            this.txtContrasena.TextChanged += new System.EventHandler(this.Contrasena_TextChanged);
             // 
             // label1
             // 
@@ -76,7 +74,6 @@
             this.label1.Size = new System.Drawing.Size(171, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "Ingrese su usuario:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -114,7 +111,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label3
             // 
@@ -164,8 +160,6 @@
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inicio de sesion";
-            this.Load += new System.EventHandler(this.Login_Load);
-            this.Click += new System.EventHandler(this.label1_Click);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

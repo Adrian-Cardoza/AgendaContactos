@@ -1,5 +1,6 @@
 ﻿using BLL;
 using EL;
+using GUI.Autenticacion;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,10 +21,34 @@ namespace GUI
 		public Dashboard(Usuario usuarioRecibido)
 		{
 			InitializeComponent();
-			_usuarioSesion = usuarioRecibido;
-			lblNombreUsuario.Text = $"Agenda Dashboard de {_usuarioSesion.NombreCompleto}";
-			ActualizarEstadisticas();
-		}
+            if (usuarioRecibido != null)
+            {
+                _usuarioSesion = usuarioRecibido;
+                if (_usuarioSesion != null && !string.IsNullOrEmpty(_usuarioSesion.NombreCompleto))
+                {
+                    // 1. Dividimos el nombre completo en partes separadas por espacios
+                    string[] partes = _usuarioSesion.NombreCompleto.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                    // 2. Verificamos si tiene al menos dos partes (Nombre y Apellido)
+                    if (partes.Length >= 2)
+                    {
+                        // Tomamos la posición 0 (Nombre) y la 2 (Apellido)
+                        lblNombreUsuario.Text = $"Bienvenido, {partes[0]} {partes[2]}";
+                    }
+                    else
+                    {
+                        // Si por alguna razón solo tiene un nombre, ponemos ese
+                        lblNombreUsuario.Text = $"Bienvenido, {partes[0]}";
+                    }
+                }
+                ActualizarEstadisticas();
+            }
+            else
+            {
+                MessageBox.Show("Error de sesión. Por favor inicie sesión nuevamente.");
+                this.Close();
+            }
+        }
 
 		private void Dashboard_Load(object sender, EventArgs e)
 		{
@@ -79,7 +104,32 @@ namespace GUI
 
 		private void Dashboard_FormClosed(object sender, FormClosedEventArgs e)
 		{
-			Application.Exit();
-		}
-	}
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            // 1. Preguntar al usuario si realmente quiere salir
+            DialogResult resultado = MessageBox.Show("¿Está seguro que desea cerrar sesión?",
+                "Cerrar Sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                // 2. Instanciar el formulario de Login
+                Login frmLogin = new Login();
+
+                // 3. Mostrar el Login
+                frmLogin.Show();
+
+                // 4. Desvincular el evento FormClosed momentáneamente para que no cierre la aplicación
+                this.FormClosed -= Dashboard_FormClosed;
+
+                // 5. Cerrar el Dashboard actual
+                this.Close();
+            }
+        }
+    }
 }

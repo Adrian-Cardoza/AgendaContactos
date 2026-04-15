@@ -142,7 +142,7 @@ namespace CUI
 
                 _contactoBLL = new ContactoBll();
 
-                // CAMBIO AQUÍ: Usamos 'int' porque Guardar devuelve un entero
+                // Guardar devuelve un entero
                 int resultado = _contactoBLL.Guardar(contacto, true);
 
                 if (resultado > 0)
@@ -170,7 +170,7 @@ namespace CUI
             {
                 _contactoBLL = new ContactoBll();
 
-                // Antes de borrar, podrías pedir una confirmación
+                // Antes de borrar, Pedirá una confirmación
                 Console.Write($"¿Está seguro de eliminar el contacto con ID {idEliminar}? (s/n): ");
                 string confirmar = Console.ReadLine();
 

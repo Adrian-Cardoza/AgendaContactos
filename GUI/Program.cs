@@ -1,4 +1,5 @@
-﻿using GUI.Autenticacion;
+﻿using EL;
+using GUI.Autenticacion;
 using GUI.Contactos;
 using System;
 using System.Collections.Generic;
@@ -10,33 +11,32 @@ namespace GUI
 {
     internal static class Program
     {
-        /// <summary>
-        /// Punto de entrada principal para la aplicación.
-        /// </summary>
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // pre-validación para iniciar nuestro sistema
-            // a través de nuestro Login
 
-            // crear una instancia (objeto) de nuestra clase Login
-            Login formLogin = new Login();
-
-            // guardar el valor devuelto
-            var respuesta = formLogin.ShowDialog();
-
-            if (respuesta == DialogResult.OK)
+            while (true) // Bucle infinito de la app
             {
-                // este método inicializa el formulario a mostrar
-                // (Cambia Form1 por el nombre de tu Menú Principal si es distinto)
-                Application.Run(new Login());
-            }
-            else
-            {
-                Application.Exit();
+                // Usamos using para que cada vez que se cierre el login se limpie la memoria
+                using (Login formLogin = new Login())
+                {
+                    if (formLogin.ShowDialog() == DialogResult.OK)
+                    {
+                        // Verificamos que el usuario realmente exista antes de abrir el Dashboard
+                        if (formLogin.UsuarioAutenticado != null)
+                        {
+                            Application.Run(new Dashboard(formLogin.UsuarioAutenticado));
+                        }
+                    }
+                    else
+                    {
+                        // Si el usuario cierra el login con la X sale del bucle
+                        break;
+                    }
+                }
             }
         }
     }
