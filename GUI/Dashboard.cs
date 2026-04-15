@@ -24,24 +24,10 @@ namespace GUI
             if (usuarioRecibido != null)
             {
                 _usuarioSesion = usuarioRecibido;
-                if (_usuarioSesion != null && !string.IsNullOrEmpty(_usuarioSesion.NombreCompleto))
-                {
-                    // 1. Dividimos el nombre completo en partes separadas por espacios
-                    string[] partes = _usuarioSesion.NombreCompleto.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+				string primerNombre = _usuarioSesion.NombreCompleto.Split(' ')[0];
+				lblNombreUsuario.Text = $"Bienvenido, {primerNombre}";
 
-                    // 2. Verificamos si tiene al menos dos partes (Nombre y Apellido)
-                    if (partes.Length >= 2)
-                    {
-                        // Tomamos la posición 0 (Nombre) y la 2 (Apellido)
-                        lblNombreUsuario.Text = $"Bienvenido, {partes[0]} {partes[2]}";
-                    }
-                    else
-                    {
-                        // Si por alguna razón solo tiene un nombre, ponemos ese
-                        lblNombreUsuario.Text = $"Bienvenido, {partes[0]}";
-                    }
-                }
-                ActualizarEstadisticas();
+				ActualizarEstadisticas();
             }
             else
             {
