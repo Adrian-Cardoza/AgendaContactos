@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -28,6 +29,7 @@ namespace GUI.Contactos
             this.buttonAgregar.Click -= Agregar_Click;
             this.buttonAgregar.Click += Agregar_Click;
         }
+       
 
         private void Agregar_Click(object sender, EventArgs e)
         {
@@ -51,6 +53,16 @@ namespace GUI.Contactos
                     _estaGuardando = false;
                     buttonAgregar.Enabled = true;
                     return; // Detiene el proceso
+                }
+                string patronCorreo = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+                if (!System.Text.RegularExpressions.Regex.IsMatch(txtCorreo.Text.Trim(), patronCorreo))
+                {
+                    MessageBox.Show("El formato del correo electrónico no es válido.", "Formato incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    // Revertimos los botones para que el usuario pueda intentar de nuevo
+                    _estaGuardando = false;
+                    buttonAgregar.Enabled = true;
+                    return;
                 }
 
                 // Si pasó la validación, creamos el objeto
@@ -89,6 +101,14 @@ namespace GUI.Contactos
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

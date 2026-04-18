@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -32,7 +33,7 @@ namespace GUI.Contactos
             txtCorreo.Text = _contacto.Correo;
             txtDireccion.Text = _contacto.Direccion;
         }
-
+       
         private void btnEditar_Click(object sender, EventArgs e)
         {
             // 1. VALIDACIÓN: Verificamos que los campos obligatorios no estén vacíos
@@ -41,6 +42,13 @@ namespace GUI.Contactos
                 MessageBox.Show("El nombre y el teléfono son campos obligatorios.",
                                 "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return; // Detiene el código aquí para que no guarde
+            }
+            string patronCorreo = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            if (!System.Text.RegularExpressions.Regex.IsMatch(txtCorreo.Text.Trim(), patronCorreo))
+            {
+                MessageBox.Show("El formato del correo electrónico no es válido.", "Formato incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                return;
             }
 
             // 2. Si pasó la validación, actualizamos el objeto
@@ -85,6 +93,14 @@ namespace GUI.Contactos
         private void txtDireccion_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

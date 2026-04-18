@@ -100,7 +100,7 @@ namespace GUI.Contactos
             // 1. Verificamos si hay una fila seleccionada en el DataGridView
             if (dgvListadoContactos.SelectedRows.Count > 0)
             {
-                // 2. Obtenemos el objeto Contacto de la fila seleccionada
+                // 2. Obtenemos el objeto Contacto de la fila seleccionaddvv  dwsadawdsada
                 Contacto contactoSeleccionado = (Contacto)dgvListadoContactos.CurrentRow.DataBoundItem;
 
                 // 3. Abrimos la ventana de edición pasando el contacto
