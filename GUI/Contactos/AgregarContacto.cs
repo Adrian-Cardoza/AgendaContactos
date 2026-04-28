@@ -29,9 +29,14 @@ namespace GUI.Contactos
             this.buttonAgregar.Click -= Agregar_Click;
             this.buttonAgregar.Click += Agregar_Click;
         }
-       
 
-        private void Agregar_Click(object sender, EventArgs e)
+		private void ResetBotones()
+		{
+			_estaGuardando = false;
+			buttonAgregar.Enabled = true;
+		}
+
+		private void Agregar_Click(object sender, EventArgs e)
         {
             if (_estaGuardando) return;
 
@@ -65,8 +70,22 @@ namespace GUI.Contactos
                     return;
                 }
 
-                // Si pasó la validación, creamos el objeto
-                Contacto nuevoContacto = new Contacto
+				ContactoBll bll = new ContactoBll();
+				string telefonoAChecar = txtTelefono.Text.Trim();
+
+				var listaExistente = bll.ObtenerContactos(_usuarioSesion.UsuarioId);
+				bool yaExiste = listaExistente.Any(c => c.Telefono.Trim() == telefonoAChecar);
+
+				if (yaExiste)
+				{
+					MessageBox.Show("Este número de teléfono ya está registrado en tu agenda.",
+									"Contacto Duplicado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+					ResetBotones();
+					return;
+				}
+
+				// Si pasó la validación, creamos el objeto
+				Contacto nuevoContacto = new Contacto
                 {
                     Nombre = txtNombre.Text.Trim(),
                     Telefono = txtTelefono.Text.Trim(),
@@ -76,7 +95,6 @@ namespace GUI.Contactos
                     FechaRegistro = DateTime.Now
                 };
 
-                ContactoBll bll = new ContactoBll();
                 int resultado = bll.Guardar(nuevoContacto);
 
                 if (resultado > 0)

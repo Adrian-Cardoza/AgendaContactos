@@ -65,5 +65,14 @@ namespace BLL
             _contactoDal = new ContactoDal();
             return _contactoDal.MostrarContactos(idUsuario);
         }
-    }
+
+		public bool ValidarTelefonoExistente(string telefono, int usuarioId)
+		{
+			// Obtenemos todos los contactos del usuario
+			var contactos = ObtenerContactos(usuarioId);
+
+			// Verificamos si alguno tiene el mismo número (limpiando espacios)
+			return contactos.Any(c => c.Telefono.Trim() == telefono.Trim());
+		}
+	}
 }
